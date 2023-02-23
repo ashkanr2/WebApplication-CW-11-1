@@ -1,0 +1,48 @@
+﻿
+@model List<Product>
+
+    <div class="table-responsive">
+        <form method="post">
+             <div class="row">
+            <select name="IdCategory" asp-items="ViewBag.Cat" required="required">
+                <option select disabled>یک مورد را انتخاب کنید </option>
+                <option value="0"> همه موارد </option>
+            </select>
+           
+            </div>
+        <button class="btn btn-warning" type="submit" asp-controller="Storage" asp-action="List">مشاهده بر اساس دسته بندی </button>
+        </form >
+         
+        <a class="btn btn-danger" asp-controller="Storage" asp-action="Create">ساخت محصول</a>
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <td>Id</td>
+                    <td>name</td>
+                    <td>color</td>
+                    <td>model</td>
+                    <td>brand</td>
+                     <td>category</td>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@item.Id</th>
+                        <td>@item.Name</td>
+                        <td>@item.Color</td>
+                        <td>@item.Model</td>
+                        <td>@item.Brand</td>
+                        <td>@item.Category.Type</td>
+                        <td>
+                            <a class="btn btn-danger" asp-controller="Storage" asp-action="Delete" asp-route-Id="@item.Id">حذف</a>
+                            <a class="btn btn-danger" asp-controller="Storage" asp-action="Edit" asp-route-Id="@item.Id">ویرایش</a>
+                        
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
