@@ -11,6 +11,8 @@ namespace WebApplication_CW_11_1.DAL
         void Update(Product product);
         List<Category> GetAllCategories();
         Category GetCategoryById(int id);
+        void SellProduct( int id);
+        
 
     }
 }

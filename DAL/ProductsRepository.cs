@@ -1,13 +1,27 @@
 ﻿using WebApplication_CW_11_1.Models;
-
+using System.Globalization;
 namespace WebApplication_CW_11_1.DAL
 {
+    public static class Function
+    {
+        public static string DateTimePersian(this DateTime dt)
+        {
+            PersianCalendar pc = new PersianCalendar();
+            return ($"{pc.GetYear(dt)}/{pc.GetMonth(dt)}/{pc.GetDayOfMonth(dt)}");
+        }
+    }
     public class ProductsRepository : IProductsRepository
     {
+        private readonly IWebHostEnvironment _webHost;
 
+        public ProductsRepository(IWebHostEnvironment webHost)
+        {
+            _webHost = webHost;
+        }
 
         public void Create(Product product)
         {
+            product.EnterTime = DateTime.Now;
             DataStorage.Products.Add(product);
         }
 
@@ -45,6 +59,23 @@ namespace WebApplication_CW_11_1.DAL
         {
             return DataStorage.Categories.FirstOrDefault(x => x.Id == id);
         }
+
+        public void SellProduct (int id)
+        {
+            var result=GetById(id);
+            var path = Path.Combine(_webHost.WebRootPath, "History.csv");
+            if (!File.Exists(path))
+            {
+                var temp=File.Create(path);
+                temp.Close();
+            }
+
+            result.ExitTime=DateTime.Now;
+           
+
+            File.AppendAllText(path,$"{result.Id},{result.Name},{result.ExitTime.DateTimePersian()}\n");
+        }
+
         
     }
 }

@@ -29,7 +29,9 @@ namespace WebApplication_CW_11_1.DAL
                 Model = "s22",
                 Brand = Brand.Sumsung,
                 Color = "red",
-                Category = category1
+                Category = category1,
+                EnterTime = DateTime.Now
+                
              });
              Products.Add(new Product()
              {
@@ -38,7 +40,8 @@ namespace WebApplication_CW_11_1.DAL
                  Model = "xyx",
                  Brand = Brand.Lenovo,
                  Color = "blue",
-                 Category = category2
+                 Category = category2,
+                 EnterTime = DateTime.Now
              });
              Products.Add(new Product()
              {
@@ -47,7 +50,8 @@ namespace WebApplication_CW_11_1.DAL
                  Model = "sss",
                  Brand = Brand.Asus,
                  Color = "red",
-                 Category = category1
+                 Category = category1,
+                 EnterTime = DateTime.Now
              });
              Products.Add(new Product()
              {
@@ -56,7 +60,8 @@ namespace WebApplication_CW_11_1.DAL
                  Model = "s plus",
                  Brand = Brand.Huawei,
                  Color = "yellow",
-                 Category = category2
+                 Category = category2,
+                 EnterTime = DateTime.Now
              });
         }
 
