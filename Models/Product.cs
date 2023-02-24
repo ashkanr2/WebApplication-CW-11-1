@@ -9,6 +9,9 @@
         public string Color { get; set; }
         public Category Category { get; set; }
 
+        public DateTime ExitTime { get; set; }
+        public DateTime EnterTime { get; set; }
+
     }
 
     public enum Brand

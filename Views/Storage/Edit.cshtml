@@ -27,6 +27,11 @@
             <select name="Cat" asp-items="ViewBag.Cat" required="required"></select>
             <span asp-validation-for="Category"></span>
         </div>
+        //<div class="row">
+        //    <label asp-for="Category"></label>
+        //    <select name="Cat" asp-items="ViewBag.Cat" required="required"></select>
+        //    <span asp-validation-for="Category"></span>
+        //</div>
 
         <button type="submit" asp-controller="Storage" asp-action="Edit" class="btn btn-primary">ویرایش</button>
     </form>

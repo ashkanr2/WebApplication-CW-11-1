@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication_CW_11_1.DAL;
@@ -48,6 +49,7 @@ namespace WebApplication_CW_11_1.Controllers
             var y = (_productsRepository.GetAllCategories());
             var z = y.Select(x => new SelectListItem() { Value = x.Id.ToString(), Text = x.Type }) ;
             ViewBag.Cat = z;
+            ViewBag.Emad = "ali";
             return View();
         }
 
@@ -93,6 +95,13 @@ namespace WebApplication_CW_11_1.Controllers
         {
             _productsRepository.Delete(id);
 
+            return RedirectToAction("List");
+        }
+
+
+        public ActionResult Sell(int id)
+        {
+            _productsRepository.SellProduct(id);
             return RedirectToAction("List");
         }
 
